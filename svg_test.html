@@ -1,0 +1,30 @@
+<html>
+ <head>
+ <style>
+ #canvas {
+ position:absolute;	
+ }
+ </style>
+  <script type="application/x-javascript">
+function draw() {
+   var context = document.getElementsByTagName('canvas')[0].getContext('2d');
+   var g1 = context.createLinearGradient(0, 0, 500, 300);
+   g1.addColorStop(0.0, 'rgba(0, 255, 0, 0.5)');
+   g1.addColorStop(1.0, 'rgba(0, 255, 0, 0.0)');
+
+
+   context.fillStyle = g1;
+   context.fillRect(0, 0, 500, 150);
+
+}
+  </script>
+ </head>
+ <body onload="draw()">
+   <canvas id="canvas" width="1024" height="768"></canvas>
+   <div style="background-color: grey; border: black; padding: 2em;">
+The draw function gets the canvas element, then obtains the 2d context. The ctx object can then be used to actually render to the canvas. The example simply fills two rectangles, by setting fillStyle to two different colors using CSS color specifications and calling fillRect. The second fillStyle uses rgba() to specify an alpha value along with the color.
+
+The fillRect, strokeRect, and clearRect calls render a filled, outlined, or clear rectangle. To render more complex shapes, paths are used. 
+   </div>
+ </body>
+</html>

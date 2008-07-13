@@ -1,0 +1,97 @@
+git config --global core.autocrlf false
+
+
+high level features
+- login
+- create an article via some method
+- display a main page with content and other stuff
+- display an articles page with lots of articles
+- display a media page with various media
+- should be agressively multilingual
+- should be agreesively geo minded
+- should have a unique user interface
+- some sort of caching to make it fast
+
+drill down into specific features
+- login
+ * multiple users with passwords
+- create content (articles) via some method
+ * should be able to attach pictures
+ * should be able to attach videos
+ * should be able to add text content with some sort of markup
+- display a main page with articles and other stuff
+ * should have some sort of column layout provided
+- display an articles page with lots of articles
+ * should show summaries of each article
+- display a media page with various media
+ * pictures and video, pointers back to articles
+- should be agressively multilingual
+ * everything stored natively in unicode
+ * all dates in localtime
+ * translation to at least one other language
+- should be agreesively geo minded
+ * all content should be localizeable
+ * should have a google/yahoo map display
+ * should allow me to geotag stuff
+- some sort of caching to make it fast
+ * action/fragment caching?
+ * memcache?  course on a slice thats ridiculous
+
+models I will need
+- login
+ * user
+- create an article via some method
+ * content
+ * location
+ * image
+ * thumbnail
+ * video
+- display a main page with articles and other stuff
+- display an articles page with lots of articles
+- display a media page with various media
+- should be agressively multilingual
+- should be agreesively geo minded
+ * location
+
+model hirearchy
+
+user has many content
+content has many images and videos
+
+location has a content and content has a location
+image has an article
+video has an article
+
+content
+title
+rawbody
+body
+user_id
+
+image
+title
+description
+extension
+(filename is id)
+
+imagethumbnail
+image_id
+thumbnail_id
+
+
+
+contentlocation
+content_id
+location_d
+
+contentimage
+content_id
+image_id
+
+contentvideo
+content_id
+video_id
+
+
+
+

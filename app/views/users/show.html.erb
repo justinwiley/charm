@@ -1,0 +1,38 @@
+<p>
+  <b>Location:</b>
+  <%=h @user.location_id %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @user.email %>
+</p>
+
+<p>
+  <b>Password hash:</b>
+  <%=h @user.password_hash %>
+</p>
+
+<p>
+  <b>Password salt:</b>
+  <%=h @user.password_salt %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @user.title %>
+</p>
+
+<p>
+  <b>Desc:</b>
+  <%=h @user.desc %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%=h @user.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

@@ -1,0 +1,46 @@
+<html>
+ <head>
+<style type="text/css">
+#foo {
+position:relative;
+}
+canvas {
+position:absolute;
+top:0;left:0; /* change these value to align */
+}
+</style>
+
+  <script type="application/x-javascript">
+function draw() {
+ var canvas = document.getElementById("canvas");
+ var ctx = canvas.getContext("2d");
+ ctx.fillStyle = "rgb(200,0,0)";
+ ctx.fillRect (10, 10, 55, 50);
+
+ ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+ ctx.fillRect (30, 30, 55, 50);
+
+}
+
+var offset = 0;
+
+function drawnew(){
+ var canvas = document.getElementById("canvas");
+ var ctx = canvas.getContext("2d");
+ ctx.rotate(45);
+ ctx.translate(100,50 + offset);
+ ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+ ctx.fillRect (30, 30, 55, 50);
+}
+  </script>
+ </head>
+ <body onload="draw();">
+   <canvas id="canvas" width="300" height="300"></canvas>
+   <div style="background-color: grey; border: black; padding: 2em;">
+The draw function gets the canvas element, then obtains the 2d context. The ctx object can then be used to actually render to the canvas. The example simply fills two rectangles, by setting fillStyle to two different colors using CSS color specifications and calling fillRect. The second fillStyle uses rgba() to specify an alpha value along with the color.
+
+The fillRect, strokeRect, and clearRect calls render a filled, outlined, or clear rectangle. To render more complex shapes, paths are used. 
+   </div>
+ </body>
+ <div onclick="drawnew();">Rotate</div>
+</html>

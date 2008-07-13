@@ -1,0 +1,34 @@
+<%= link_to 'Show', @item %> | <%= link_to 'Back', items_path %>
+<hr class="space">
+<hr class="space">
+<hr />
+<div class="span-10 colborder">
+<h4>Editing "<%= h(truncate(@item.title,30)) %>"</h4>
+<% form_for(@item) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :rawbody %>
+  </p>
+  <p>
+    <%= f.label :published %><br />
+    <%= f.check_box :published %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+</div>
+<div class="span-12 last">
+<h4>Preview</h4>
+<h6 class="alt"><%=h item.title %></h6>
+<%= @item.to_html %>
+</div>
+<hr />
+<%= link_to 'Show', @item %> | <%= link_to 'Back', items_path %>

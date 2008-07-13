@@ -1,0 +1,27 @@
+<div class="span-5 colborder">
+<h1 class="alt">Justin Tyler Wiley</h1>
+<p>A log of work and play.</p>
+</div>
+
+<!--blog content-->
+<div class="span-12 colborder">
+<% for item in @items %>
+  <h6 class="dquo"><%=h item.title %> <%= h item.created_at %></h6>
+  <% if(User.current.admin?) %>
+  <%= link_to "Edit", :action => :edit, :controller => :item, :id => item.id %>
+  <% end %>
+  <p><%= item.to_html %></p>
+  <hr />
+  <hr class="space">
+<% end %>
+</div>
+
+<div class="span-5 last">
+<p>Maps will go here</p>
+</div>
+
+<hr />
+<br />
+
+<%= link_to 'New item', new_item_path %>
+<p class="incr">s95aGXrV34FEgshn9.m1xCILw9nZdix2F2mUkc5EYlkQEMBY8dIzitr6sAMV954wuskhElBKmw--</p>

@@ -1,0 +1,33 @@
+<p>
+  <b>User:</b>
+  <%=h @item.user_id %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @item.location_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @item.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @item.body %>
+</p>
+
+<p>
+  <b>Rawbody:</b>
+  <%=h @item.rawbody %>
+</p>
+
+<p>
+  <b>Published:</b>
+  <%=h @item.published %>
+</p>
+
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,41 @@
+
+ruby script/generate scaffold user location_id:integer email:string password_hash:string password_salt:string title:string desc:text type:string
+
+ruby script/generate scaffold location user_id:integer title:text desc:text lat:string long:string address:string city:string state:string zip:string country:string
+
+ruby script/generate scaffold item user_id:integer location_id:integer title:string body:text rawbody:text published:boolean
+
+image
+
+user_id:integer
+location_id:integer
+pathname:string
+title:string
+desc:text
+created_at:datetime 
+updated_at:datetime
+
+
+item_image
+
+item_id:integer
+image_id:integer
+created_at:datetime 
+updated_at:datetime
+
+item_video
+
+item_id:integer
+video_id:integer
+created_at:datetime 
+updated_at:datetime
+
+video
+
+user_id:integer
+location_id:integer
+title:string
+desc:text
+embed:text
+created_at:datetime 
+updated_at:datetime
