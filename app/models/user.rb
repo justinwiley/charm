@@ -25,11 +25,6 @@ class User < ActiveRecord::Base
   
   # if there is no current user, return a no user object that will respond negatively to all
   def self.current
-    if(self.current_user == nil)
-      NoUser.new
-    else
-      self.current_user
-    end
+    self.current_user == nil ? NoUser.new : self.current_user
   end
-  
 end
