@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time TODO performance optimization
   
   # prevent spiders from spoiling the party and ensure RESTful calling of appripriate actions
-  verify :method => :post, :only => [:destroy, :create, :update], :redirect_to => { :action => :list }
+  verify :method => :post, :only => [:destroy, :update], :redirect_to => { :action => :list }
   verify :method => :get, :only => [:index, :show, :new], :redirect_to => { :action => :list }
   
   # See ActionController::RequestForgeryProtection for details

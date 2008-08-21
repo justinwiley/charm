@@ -6,6 +6,8 @@
 #  3. User redirected from remote site to call back url /create.  /create retrieves request token in session, via http request exchanges it for acces token
 #  4. Access token stored in database, user redirected to /index
 class OauthRemoteAccessTokensController < ApplicationController
+  verify :method => :get, :only => [:create], :redirect_to => { :action => :index } # see comment on method
+
   # GET /oauth_remote_access_tokens
   # GET /oauth_remote_access_tokens.xml
   def index
@@ -62,21 +64,20 @@ class OauthRemoteAccessTokensController < ApplicationController
   # GET/create.xml
   # Redirect to provider site for authentication
   def create
-    return head(:method_not_allowed) unless request.get?
     begin
       token = session[:pending_oauth_access_request][:request_token].get_access_token
       provider_id = session[:pending_oauth_access_request][:provider_id]
       respond_to do |format|
-        if OauthRemoteAccessToken.create(:token_object  => token,
-                                         :provider_id   => session[:oauth_provider_id],
-                                         :user_id       => User.current.id)
+        if OauthRemoteAccessToken.create(:token_object                       => token,
+                                         :oauth_remote_service_provider_id   => provider_id,
+                                         :user_id                            => current_user.id)
           clear_request_session_info
           flash[:notice] = "You have sucessfully authorized us to use this service."
-          format.html { redirect_to(oauth_remote_access_token_index_url) }
+          format.html { redirect_to(oauth_remote_access_tokens_url) }
           format.xml  { render :xml => @oauth_remote_access_token, :status => :created, :location => @oauth_remote_access_token }
         else
           flash[:notice] = "There was a problem creating this token."
-          format.html { render :action => "index" }
+          format.html { redirect_to(oauth_remote_access_tokens_url) }
           format.xml  { render :xml => @oauth_remote_access_token.errors, :status => :unprocessable_entity }
         end
       end
