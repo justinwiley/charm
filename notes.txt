@@ -15,6 +15,84 @@ name:string description:string authenticate_url:string consumer_key:string consu
 
 ruby script/generate rspec_scaffold oauth_remote_access_token oauth_remote_service_provider_id:integer,user_id:integer,token_object:string
 
+newrelic install
+
++ ./LICENSE
++ ./README
++ ./init.rb
++ ./install.rb
++ ./lib/newrelic/agent/agent.rb
++ ./lib/newrelic/agent/error_collector.rb
++ ./lib/newrelic/agent/instrumentation/action_controller.rb
++ ./lib/newrelic/agent/instrumentation/action_web_service.rb
++ ./lib/newrelic/agent/instrumentation/active_record.rb
++ ./lib/newrelic/agent/instrumentation/dispatcher.rb
++ ./lib/newrelic/agent/instrumentation/errors.rb
++ ./lib/newrelic/agent/instrumentation/memcache.rb
++ ./lib/newrelic/agent/instrumentation/memcached.rb
++ ./lib/newrelic/agent/instrumentation/rails.rb
++ ./lib/newrelic/agent/method_tracer.rb
++ ./lib/newrelic/agent/samplers/cpu.rb
++ ./lib/newrelic/agent/samplers/memory.rb
++ ./lib/newrelic/agent/samplers/mongrel.rb
++ ./lib/newrelic/agent/stats_engine.rb
++ ./lib/newrelic/agent/synchronize.rb
++ ./lib/newrelic/agent/transaction_sampler.rb
++ ./lib/newrelic/agent/worker_loop.rb
++ ./lib/newrelic/agent.rb
++ ./lib/newrelic/metric_data.rb
++ ./lib/newrelic/noticed_error.rb
++ ./lib/newrelic/shim_agent.rb
++ ./lib/newrelic/stats.rb
++ ./lib/newrelic/transaction_sample.rb
++ ./lib/newrelic_routing.rb
++ ./newrelic.yml
++ ./tasks/agent_tests.rake
++ ./test/newrelic/agent/mock_agent.rb
++ ./test/newrelic/agent/mock_ar_connection.rb
++ ./test/newrelic/agent/mock_http.rb
++ ./test/newrelic/agent/mock_http_server.rb
++ ./test/newrelic/agent/mock_scope_listener.rb
++ ./test/newrelic/agent/tc_agent.rb
++ ./test/newrelic/agent/tc_controller.rb
++ ./test/newrelic/agent/tc_error_collector.rb
++ ./test/newrelic/agent/tc_method_tracer.rb
++ ./test/newrelic/agent/tc_stats_engine.rb
++ ./test/newrelic/agent/tc_synchronize.rb
++ ./test/newrelic/agent/tc_transaction_sample.rb
++ ./test/newrelic/agent/tc_transaction_sample_builder.rb
++ ./test/newrelic/agent/tc_transaction_sampler.rb
++ ./test/newrelic/agent/tc_worker_loop.rb
++ ./test/newrelic/agent/testable_agent.rb
++ ./test/newrelic/tc_stats.rb
++ ./ui/controllers/newrelic_controller.rb
++ ./ui/helpers/google_pie_chart.rb
++ ./ui/helpers/newrelic_helper.rb
++ ./ui/helpers/transaction_analysis.rb
++ ./ui/views/layouts/default.rhtml
++ ./ui/views/newrelic/_sample.rhtml
++ ./ui/views/newrelic/_segment.rhtml
++ ./ui/views/newrelic/_segment_row.rhtml
++ ./ui/views/newrelic/_show_sample_detail.rhtml
++ ./ui/views/newrelic/_show_sample_sql.rhtml
++ ./ui/views/newrelic/_show_sample_summary.rhtml
++ ./ui/views/newrelic/_sql_row.rhtml
++ ./ui/views/newrelic/_stack_trace.rhtml
++ ./ui/views/newrelic/_table.rhtml
++ ./ui/views/newrelic/explain_sql.rhtml
++ ./ui/views/newrelic/images/16-arrow-down.png
++ ./ui/views/newrelic/images/16-arrow-right.png
++ ./ui/views/newrelic/images/blue_bar.gif
++ ./ui/views/newrelic/images/gray_bar.gif
++ ./ui/views/newrelic/index.rhtml
++ ./ui/views/newrelic/javascript/transaction_sample.js
++ ./ui/views/newrelic/sample_not_found.rhtml
++ ./ui/views/newrelic/show_sample.rhtml
++ ./ui/views/newrelic/show_source.rhtml
++ ./ui/views/newrelic/stylesheets/style.css
+
+
+
 
 Syntax:
 token_object = @token = User.current.oauth_remote_access_tokens.find_by_name("firebird")

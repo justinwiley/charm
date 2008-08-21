@@ -67,12 +67,12 @@ class OauthRemoteAccessTokensController < ApplicationController
       token = session[:pending_oauth_access_request][:request_token].get_access_token
       provider_id = session[:pending_oauth_access_request][:provider_id]
       respond_to do |format|
-        if User.current.oauth_remote_access_tokens.create(:token_object  => token,
-                                                          :provider_id   => session[:oauth_provider_id],
-                                                          :user_id       => User.current.id)
+        if OauthRemoteAccessToken.create(:token_object  => token,
+                                         :provider_id   => session[:oauth_provider_id],
+                                         :user_id       => User.current.id)
           clear_request_session_info
           flash[:notice] = "You have sucessfully authorized us to use this service."
-          format.html { redirect_to(@oauth_remote_access_token) }
+          format.html { redirect_to(oauth_remote_access_token_index_url) }
           format.xml  { render :xml => @oauth_remote_access_token, :status => :created, :location => @oauth_remote_access_token }
         else
           flash[:notice] = "There was a problem creating this token."

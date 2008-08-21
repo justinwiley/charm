@@ -1,3 +1,7 @@
+require 'redgreen/autotest'
+require 'autotest/redgreen'
+require 'autotest/snarl'
 Autotest.add_hook :initialize do |at|
   at.add_exception("spec/interop/test/unit/resources")
 end
+

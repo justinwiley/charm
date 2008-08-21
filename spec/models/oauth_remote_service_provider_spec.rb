@@ -17,7 +17,7 @@ describe OauthRemoteServiceProvider do
   it "should validate that names are unique" do
     
   end
-  it "should validate format of authorize urls" do
+  it "should validate format of authorize urls" do 
     @orsp.site_url = ""
     @orsp.should_not be_valid
     @orsp.site_url = "asd"
