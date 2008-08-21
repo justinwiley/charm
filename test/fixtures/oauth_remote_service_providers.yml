@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  authenticate_url: MyString
+  consumer_key: MyString
+  consumer_secret: MyString
+  authorize_url: MyString
+
+two:
+  name: MyString
+  description: MyString
+  authenticate_url: MyString
+  consumer_key: MyString
+  consumer_secret: MyString
+  authorize_url: MyString

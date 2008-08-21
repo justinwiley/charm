@@ -2,8 +2,14 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  helper :all # include all helpers, all the time
+  include AuthenticatedSystem   # include restful authentication methods in all controllers
 
+  helper :all # include all helpers, all the time TODO performance optimization
+  
+  # prevent spiders from spoiling the party and ensure RESTful calling of appripriate actions
+  verify :method => :post, :only => [:destroy, :create, :update], :redirect_to => { :action => :list }
+  verify :method => :get, :only => [:index, :show, :new], :redirect_to => { :action => :list }
+  
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
   protect_from_forgery # :secret => 'e036d8409078fbd3d8c9e3f2824d8242'

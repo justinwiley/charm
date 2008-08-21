@@ -1,9 +1,44 @@
+
+oauth-generate
+     
+     
+     
+rm app/models/client_application.rb
+rm app/models/oauth_token.rb
+rm app/models/request_token.rb
+rm app/models/access_token.rb
+rm app/models/oauth_nonce.rb
+rm spec/models/client_application_spec.rb
+rm spec/models/oauth_token_spec.rb
+rm spec/models/oauth_nonce_spec.rb
+rm spec/fixtures/client_applications.yml
+rm spec/fixtures/oauth_tokens.yml
+rm spec/fixtures/oauth_nonces.yml
+rm app/controllers/oauth_controller.rb
+rm app/helpers/oauth_helper.rb
+rm spec/controllers/oauth_controller_spec_helper.rb
+rm spec/controllers/oauth_controller_spec.rb
+rm app/controllers/oauth_clients_controller.rb
+rm app/helpers/oauth_clients_helper.rb
+rm spec/controllers/oauth_clients_controller_spec.rb
+rm app/views/oauth_clients/_form.html.erb
+rm app/views/oauth_clients/new.html.erb
+rm app/views/oauth_clients/index.html.erb
+rm app/views/oauth_clients/show.html.erb
+rm app/views/oauth/authorize.html.erb
+rm app/views/oauth/authorize_success.html.erb
+rm app/views/oauth/authorize_failure.html.erb
+rm db/migrate/20080819011036_create_oauth_tables.rb
+
+
+
+
 git config --global core.autocrlf false
 
 
 high level features
 - login
-- create an article via some method
+- git rm an article via some method
 - display a main page with content and other stuff
 - display an articles page with lots of articles
 - display a media page with various media
@@ -15,7 +50,7 @@ high level features
 drill down into specific features
 - login
  * multiple users with passwords
-- create content (articles) via some method
+- git rm content (articles) via some method
  * should be able to attach pictures
  * should be able to attach videos
  * should be able to add text content with some sort of markup
@@ -40,7 +75,7 @@ drill down into specific features
 models I will need
 - login
  * user
-- create an article via some method
+- git rm an article via some method
  * content
  * location
  * image

@@ -1,1 +1,30 @@
-A simple geo-tagging blog, a story in many parts
+A simple geo-tagging blog, a story in many parts.
+
+find a provider
+create a provider
+
+______github creation______
+
+Global setup:
+
+  git config --global user.email justin.wiley@gmail.com
+      
+
+Next steps:
+
+  mkdir test
+  cd test
+  git init
+  touch README
+  git add README
+  git commit -m 'first commit'
+  git remote add origin git@github.com:justinwiley/test.git
+  git push origin master
+      
+
+Existing Git Repo?
+
+  cd existing_git_repo
+  git remote add origin git@github.com:justinwiley/test.git
+  git push origin master
+      

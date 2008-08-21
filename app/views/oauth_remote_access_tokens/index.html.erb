@@ -1,0 +1,22 @@
+<h1>Manage your remote service authorizations</h1>
+<p>You have authorized us to retrieve information about you from the following sites:</p>
+<table>
+  <tr>
+    <th>Remote Services</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% unless @oauth_remote_access_tokens.blank? %>
+  You have not us to access any remote services, or access to those services has expired
+<% end %>
+<% for access_token in @oauth_remote_access_tokens %>
+  <tr>
+    <td><%=h access_token.oauth_remote_service_provider.name %></td>
+    <td><%= link_to 'Revoke permission to access this service', access_token, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New authorization', new_oauth_remote_access_token_path %>

@@ -1,0 +1,92 @@
+brian
+chris
+Call page on cell phone number listed on business after
+Tips
+  -research the website
+  -explain your passion for social interaction sites, namely doing them better
+  -pair programming experiences
+  -ror
+  -linux open source, test driven
+
+
+ruby script/generate scaffold oauth_remote_service_provider name:string description:string authenticate_url:string consumer_key:string consumer_secret:string authorize_url:string
+
+name:string description:string authenticate_url:string consumer_key:string consumer_secret:string authorize_url:string
+
+ruby script/generate rspec_scaffold oauth_remote_access_token oauth_remote_service_provider_id:integer,user_id:integer,token_object:string
+
+
+Syntax:
+token_object = @token = User.current.oauth_remote_access_tokens.find_by_name("firebird")
+
+
+class OauthRemoteServiceProvider < ActiveRecord::Base
+  has_many :oauth_remote_access_tokens
+  validates_pressence_of :name
+  validates_uniquenes_of :name
+  validates_pressence_of :consumer_key
+  validates_pressence_of :consumer_secret
+  validates_format_of :authorize_url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix, :message => "is not a valid url"
+end
+
+class OauthRemoteAccessToken < ActiveRecord::Base
+  after_validation_on_create :delete_existing_access_token_if_exists
+  belongs_to :user
+  belongs_to :oauth_remote_service_provider
+  serialize :token_object   # serializes OAuth::AccessToken
+  
+  alias :expire, :destroy
+  
+  # there should only be one active access token per service provider per user
+  def delete_existing_access_token_if_exists
+    if(existing_token = OauthRemoteAccessToken.find(:conditions => ['oauth_service_provider_id = ? AND user_id = ?',self.oauth_service_provider_id, self.user_id])
+      existing_token.destroy
+    end
+  end
+end
+
+describe OauthRemoteAccessToken
+  it "self.expire should destroy token" do
+
+  end
+    
+  it "should delete exisiting access token on save, if validations pass"
+  it "should serialize the given access token"
+end
+
+module OauthFinderMethods
+  self.included
+    define_method
+  end
+end
+
+
+# validates the correctness and existance of a given url
+# adapted from: http://www.igvita.com/2006/09/07/validating-url-in-ruby-on-rails/
+class ActiveRecord::Base
+  def self.validates_uri_and_existence_of(*attr_names)
+    configuration = { :message => "is not valid or not responding", :on => :save }
+    configuration.update(attr_names.pop) if attr_names.last.is_a?(Hash)
+    valid_uri = /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?$)/ix
+ 
+    validates_each(attr_names, configuration) do |r, a, v|
+        if v.to_s =~ valid_uri # check RegExp
+              begin # check header response
+                  case Net::HTTP.get_response(URI.parse(v))
+                    when Net::HTTPSuccess then true
+                    else r.errors.add(a, "does not exist, or is not responding") and false
+                  end
+              rescue # Recover on DNS failures..
+                  r.errors.add(a, "does not exist, or is not responding") and false
+              end
+        else
+          r.errors.add(a, "is not a valid URI") and false
+        end
+    end
+  end
+end
+
+class OauthAccessToken < ActiveRecord::Base
+  serialize :token_object
+  
+end

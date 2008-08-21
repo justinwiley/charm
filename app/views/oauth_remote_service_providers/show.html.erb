@@ -1,0 +1,33 @@
+<p>
+  <b>Name:</b>
+  <%=h @oauth_remote_service_provider.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @oauth_remote_service_provider.description %>
+</p>
+
+<p>
+  <b>Authenticate url:</b>
+  <%=h @oauth_remote_service_provider.authenticate_url %>
+</p>
+
+<p>
+  <b>Consumer key:</b>
+  <%=h @oauth_remote_service_provider.consumer_key %>
+</p>
+
+<p>
+  <b>Consumer secret:</b>
+  <%=h @oauth_remote_service_provider.consumer_secret %>
+</p>
+
+<p>
+  <b>Authorize url:</b>
+  <%=h @oauth_remote_service_provider.authorize_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_oauth_remote_service_provider_path(@oauth_remote_service_provider) %> |
+<%= link_to 'Back', oauth_remote_service_providers_path %>

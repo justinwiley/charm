@@ -1,3 +1,5 @@
+<% title "Welcome" %>
+
 <div class="span-5 colborder">
 <h1 class="alt">Justin Tyler Wiley</h1>
 <p>A log of work and play.</p>
@@ -7,7 +9,7 @@
 <div class="span-12 colborder">
 <% for item in @items %>
   <h6 class="dquo"><%=h item.title %> <%= h item.created_at %></h6>
-  <% if(User.current.admin?) %>
+  <% if(logged_in?) %>
   <%= link_to "Edit", :action => :edit, :controller => :item, :id => item.id %>
   <% end %>
   <p><%= item.to_html %></p>

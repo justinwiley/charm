@@ -1,1 +1,4 @@
 log/*
+nbproject/*
+tmp/*
+config/initializers/site_keys.rb

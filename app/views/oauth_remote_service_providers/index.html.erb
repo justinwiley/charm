@@ -1,0 +1,30 @@
+<h1>Listing oauth_remote_service_providers</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Authenticate url</th>
+    <th>Consumer key</th>
+    <th>Consumer secret</th>
+    <th>Authorize url</th>
+  </tr>
+
+<% for oauth_remote_service_provider in @oauth_remote_service_providers %>
+  <tr>
+    <td><%=h oauth_remote_service_provider.name %></td>
+    <td><%=h oauth_remote_service_provider.description %></td>
+    <td><%=h oauth_remote_service_provider.authenticate_url %></td>
+    <td><%=h oauth_remote_service_provider.consumer_key %></td>
+    <td><%=h oauth_remote_service_provider.consumer_secret %></td>
+    <td><%=h oauth_remote_service_provider.authorize_url %></td>
+    <td><%= link_to 'Show', oauth_remote_service_provider %></td>
+    <td><%= link_to 'Edit', edit_oauth_remote_service_provider_path(oauth_remote_service_provider) %></td>
+    <td><%= link_to 'Destroy', oauth_remote_service_provider, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New oauth_remote_service_provider', new_oauth_remote_service_provider_path %>

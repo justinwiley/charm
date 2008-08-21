@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  oauth_remote_service_provider_id: 1
+  user_id: 1
+  token_object: MyString
+
+two:
+  oauth_remote_service_provider_id: 1
+  user_id: 1
+  token_object: MyString

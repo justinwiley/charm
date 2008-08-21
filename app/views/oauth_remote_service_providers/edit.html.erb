@@ -1,0 +1,36 @@
+<h1>Editing oauth_remote_service_provider</h1>
+
+<% form_for(@oauth_remote_service_provider) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :authenticate_url %><br />
+    <%= f.text_field :authenticate_url %>
+  </p>
+  <p>
+    <%= f.label :consumer_key %><br />
+    <%= f.text_field :consumer_key %>
+  </p>
+  <p>
+    <%= f.label :consumer_secret %><br />
+    <%= f.text_field :consumer_secret %>
+  </p>
+  <p>
+    <%= f.label :authorize_url %><br />
+    <%= f.text_field :authorize_url %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @oauth_remote_service_provider %> |
+<%= link_to 'Back', oauth_remote_service_providers_path %>

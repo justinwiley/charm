@@ -9,44 +9,69 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080712030831) do
+ActiveRecord::Schema.define(:version => 20080820193354) do
 
   create_table "items", :force => true do |t|
-    t.integer  "user_id",     :limit => 11
-    t.integer  "location_id", :limit => 11
-    t.string   "title"
-    t.text     "body"
-    t.text     "rawbody"
-    t.boolean  "published"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.column "user_id", :integer, :limit => 11
+    t.column "location_id", :integer, :limit => 11
+    t.column "title", :string
+    t.column "body", :text
+    t.column "rawbody", :text
+    t.column "published", :boolean
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
   end
 
   create_table "locations", :force => true do |t|
-    t.integer  "user_id",    :limit => 11
-    t.text     "title"
-    t.text     "desc"
-    t.string   "lat"
-    t.string   "long"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.column "user_id", :integer, :limit => 11
+    t.column "title", :text
+    t.column "desc", :text
+    t.column "lat", :string
+    t.column "long", :string
+    t.column "address", :string
+    t.column "city", :string
+    t.column "state", :string
+    t.column "zip", :string
+    t.column "country", :string
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+  end
+
+  create_table "oauth_remote_access_tokens", :force => true do |t|
+    t.column "oauth_remote_service_provider_id", :integer, :limit => 11
+    t.column "user_id", :integer, :limit => 11
+    t.column "token_object", :string
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
+  end
+
+  create_table "oauth_remote_service_providers", :force => true do |t|
+    t.column "user_id", :integer, :limit => 11
+    t.column "name", :string
+    t.column "description", :string
+    t.column "authenticate_url", :string
+    t.column "consumer_key", :string
+    t.column "consumer_secret", :string
+    t.column "authorize_url", :string
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "location_id",   :limit => 11
-    t.string   "email"
-    t.string   "password_hash"
-    t.string   "password_salt"
-    t.string   "title"
-    t.text     "desc"
-    t.string   "type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.column "location_id", :integer, :limit => 11
+    t.column "login", :string
+    t.column "email", :string
+    t.column "first_name", :string, :limit => 80
+    t.column "last_name", :string, :limit => 80
+    t.column "crypted_password", :string, :limit => 40
+    t.column "salt", :string, :limit => 40
+    t.column "title", :string
+    t.column "desc", :text
+    t.column "gravatar", :string
+    t.column "remember_token", :string
+    t.column "remember_token_expires_at", :datetime
+    t.column "created_at", :datetime
+    t.column "updated_at", :datetime
   end
 
 end

@@ -3,7 +3,18 @@ development:
   username: charmer
   password: charmer08
   database: charm_development
-  
+
+test:
+  adapter: mysql
+  username: charmer
+  password: charmer08
+  database: charm_test
+
+production:
+  adapter: mysql
+  username: charmer
+  password: charmer08
+  database: charm_test  
 
 
 

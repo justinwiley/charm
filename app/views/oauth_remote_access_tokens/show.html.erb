@@ -1,0 +1,18 @@
+<p>
+  <b>Oauth remote service provider:</b>
+  <%=h @oauth_remote_access_token.oauth_remote_service_provider_id %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @oauth_remote_access_token.user_id %>
+</p>
+
+<p>
+  <b>Token object:</b>
+  <%=h @oauth_remote_access_token.token_object %>
+</p>
+
+
+<%= link_to 'Edit', edit_oauth_remote_access_token_path(@oauth_remote_access_token) %> |
+<%= link_to 'Back', oauth_remote_access_tokens_path %>

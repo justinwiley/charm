@@ -1,5 +1,5 @@
 
-ruby script/generate scaffold user location_id:integer email:string password_hash:string password_salt:string title:string desc:text type:string
+ruby script/generate model user location_id:integer login:string email:string first_name:string last_name:string :crypted_password,:string salt:string title:string desc:text gravatar:string remember_token:string remember_token_expires_at:datetime
 
 ruby script/generate scaffold location user_id:integer title:text desc:text lat:string long:string address:string city:string state:string zip:string country:string
 
