@@ -8,7 +8,7 @@ describe OauthRemoteAccessToken do
     @orat.user_id = 1
   end
 
-  it "a properlly configured OauthRemoteAccessToken should be valid" do
+  it "a properlly set OauthRemoteAccessToken instance should be valid" do
     @orat.should be_valid
   end
   it "expire should call destroy" do

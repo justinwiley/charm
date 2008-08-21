@@ -2,24 +2,37 @@ require File.dirname(__FILE__) + '/../spec_helper'
 
 describe OauthRemoteServiceProvider do
   before(:each) do
-    @orat = OauthRemoteAccessToken.new    # OauthRemoteAccessToken or spacequest.wikia.com/wiki/Orat
-    @orat.token_object = OAuth::AccessToken.new("","","")
-    @orat.oauth_remote_service_provider_id = 1
-    @orat.user_id = 1
+    @orsp = OauthRemoteServiceProvider.new
+    @orsp.user_id = 1
+    @orsp.description = ""
+    @orsp.name = "foobar"
+    @orsp.authentice_url = "http://www.foobar.com"
+    @orsp.consumer_key = "0001"
+    @orsp.consumer_secret = "0001"
   end
 
-  it "a properlly configured OauthRemoteAccessToken should be valid" do
-    @orat.should be_valid
+    it "a properlly set OauthRemoteServiceProvider instance should be valid" do
+    @orsp.should be_valid
   end
-  it "expire should call destroy" do
-    @orat.expire
+  it "should validate that names are unique" do
+    
   end
-  it "should fail to serialize a non-OAuth::AccessToken" do
-    @orat.token_object = String.new
-    lambda {@orat.save}.should raise_error(ActiveRecord::SerializationTypeMismatch)
+  it "should validate format of authorize urls" do
+    @orsp.authenticate_url = ""
+    @orsp.should_not be_valid
+    @orsp.authenticate_url = "asd"
+    @orsp.should_not be_valid
+    @orsp.authenticate_url = "http://"
+    @orsp.should_not be_valid
+    @orsp.authenticate_url = "www.yahoo"
+    @orsp.should_not be_valid
+    @orsp.authenticate_url = "http://www.yahoo"
+    @orsp.should_not be_valid
+    @orsp.authenticate_url = "http://www.yahoo.com"
+    @orsp.should be_valid
   end
-  it "should delete exisiting access token on save, if validations pass" do
-    @orat.should_receive(:delete_existing_access_token_if_exists)
-    @orat.save
+  it "should require an associated user" do
+    @orsp.user_id = nil
+    @orsp.should_not be_valid
   end
 end

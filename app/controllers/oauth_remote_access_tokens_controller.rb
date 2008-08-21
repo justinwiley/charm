@@ -69,7 +69,7 @@ class OauthRemoteAccessTokensController < ApplicationController
                                                           :provider_id   => session[:oauth_provider_id],
                                                           :user_id       => User.current.id)
           clear_request_session_info
-          flash[:notice] = "You have sucessfully authorized use this service."
+          flash[:notice] = "You have sucessfully authorized us to use this service."
           format.html { redirect_to(@oauth_remote_access_token) }
           format.xml  { render :xml => @oauth_remote_access_token, :status => :created, :location => @oauth_remote_access_token }
         else

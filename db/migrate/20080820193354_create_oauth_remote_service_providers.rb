@@ -4,7 +4,6 @@ class CreateOauthRemoteServiceProviders < ActiveRecord::Migration
       t.integer :user_id
       t.string :name
       t.string :description
-      t.string :authenticate_url
       t.string :consumer_key
       t.string :consumer_secret
       t.string :authorize_url
