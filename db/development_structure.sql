@@ -43,10 +43,9 @@ CREATE TABLE `oauth_remote_service_providers` (
   `user_id` int(11) default NULL,
   `name` varchar(255) default NULL,
   `description` varchar(255) default NULL,
-  `authenticate_url` varchar(255) default NULL,
   `consumer_key` varchar(255) default NULL,
   `consumer_secret` varchar(255) default NULL,
-  `authorize_url` varchar(255) default NULL,
+  `site_url` varchar(255) default NULL,
   `created_at` datetime default NULL,
   `updated_at` datetime default NULL,
   PRIMARY KEY  (`id`)
@@ -76,13 +75,9 @@ CREATE TABLE `users` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO schema_migrations (version) VALUES ('20080711172923');
-
 INSERT INTO schema_migrations (version) VALUES ('20080711173000');
 
 INSERT INTO schema_migrations (version) VALUES ('20080712030831');
-
-INSERT INTO schema_migrations (version) VALUES ('20080818185834');
 
 INSERT INTO schema_migrations (version) VALUES ('20080818190423');
 

@@ -49,10 +49,9 @@ ActiveRecord::Schema.define(:version => 20080820193354) do
     t.column "user_id", :integer, :limit => 11
     t.column "name", :string
     t.column "description", :string
-    t.column "authenticate_url", :string
     t.column "consumer_key", :string
     t.column "consumer_secret", :string
-    t.column "authorize_url", :string
+    t.column "site_url", :string
     t.column "created_at", :datetime
     t.column "updated_at", :datetime
   end

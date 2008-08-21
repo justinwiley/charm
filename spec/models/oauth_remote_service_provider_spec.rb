@@ -6,7 +6,7 @@ describe OauthRemoteServiceProvider do
     @orsp.user_id = 1
     @orsp.description = ""
     @orsp.name = "foobar"
-    @orsp.authentice_url = "http://www.foobar.com"
+    @orsp.site_url = "http://www.foobar.com"
     @orsp.consumer_key = "0001"
     @orsp.consumer_secret = "0001"
   end
@@ -18,17 +18,17 @@ describe OauthRemoteServiceProvider do
     
   end
   it "should validate format of authorize urls" do
-    @orsp.authenticate_url = ""
+    @orsp.site_url = ""
     @orsp.should_not be_valid
-    @orsp.authenticate_url = "asd"
+    @orsp.site_url = "asd"
     @orsp.should_not be_valid
-    @orsp.authenticate_url = "http://"
+    @orsp.site_url = "http://"
     @orsp.should_not be_valid
-    @orsp.authenticate_url = "www.yahoo"
+    @orsp.site_url = "www.yahoo"
     @orsp.should_not be_valid
-    @orsp.authenticate_url = "http://www.yahoo"
+    @orsp.site_url = "http://www.yahoo"
     @orsp.should_not be_valid
-    @orsp.authenticate_url = "http://www.yahoo.com"
+    @orsp.site_url = "http://www.yahoo.com"
     @orsp.should be_valid
   end
   it "should require an associated user" do

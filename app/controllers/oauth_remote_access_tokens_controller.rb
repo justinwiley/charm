@@ -34,17 +34,19 @@ class OauthRemoteAccessTokensController < ApplicationController
   # TODO: farmout @consumer.get_request_token to backgroundrb process to prevent mongrel lock
   def new
     begin
-      @provider = OauthRemoteProvider.find(params[:provider_id])
-      @consumer = OAuth::Consumer.new(@provider.consumer_key, 
-                                      @provider.consumer_secret,
-                                      {:site=>@provider.authorize_url})
+      provider = OauthRemoteServiceProvider.find(params[:oauth_remote_service_provider_id])
+      consumer = OAuth::Consumer.new(provider.consumer_key, 
+                                     provider.consumer_secret,
+                                     {:site => provider.site_url})
+      # contact the remote service, for request token, returns request token object
+      request_token = consumer.get_request_token
       # this means one pending oauth request peruser, might want to replace with db table
-      session[:pending_oauth_access_request] = {:provider_id   => params[:provider_id], 
-                                                :request_token => @consumer.get_request_token }
+      session[:pending_oauth_access_request] = {:provider_id   => params[:oauth_remote_service_provider_id], 
+                                                :request_token => request_token }
       # redirect to providers site for user authentication
       respond_to do |format|
-        format.html { redirect_to(session[:oauth_request_token].authorize_url) }
-        format.xml  { redirect_to(session[:oauth_request_token].authorize_url) }
+        format.html { redirect_to(request_token.authorize_url) }
+        format.xml  { redirect_to(request_token.authorize_url) }
       end
     rescue ActiveRecord::RecordNotFound               # raised if cannot find remote provider
       redirect_to_error
