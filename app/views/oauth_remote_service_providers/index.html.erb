@@ -1,23 +1,46 @@
-<h1>Listing oauth_remote_service_providers</h1>
+<h1>Listing OAuth Remote Service Providers</h1>
+<p><i>oauth-consumer plugin, Justin Tyler Wiley 2008, <%= mail_to 'justin.wiley@gmail.com', 'questions? constructive comments?' %></i></p>
+<p>Here you can add the remote services that you wish to access.  This page should be password protect, administrators only of course.</p>
+<h3>Steps to setting up a remote OAuth service</h3>
+<ol>
+  <li>Go to the service site via browser (for example agree2.com), register your application. 
+  <li>For the call back url use: <%= new_oauth_remote_service_provider_url %>
+  <li>Put a link to the authorize url somewhere on your site like that below:
+  <br />
+  <%=  link_to 'click here to authorize us to access your remote information', new_oauth_remote_access_token_url(:oauth_remote_service_provider_id => 1) %> 
+  <br />(link_to 'click here', new_oauth_remote_access_token_url(:oauth_remote_service_provider_id => 1)
+</ol>
+
+<h3>Steps for a user to authorize you to use the remote service</h3>
+<ol>
+  <li>User clicks on (link_to new_oauth_remote_access_token), action contacts remote to create request token
+  <li>User redirected to remote site, clicks authorize, redirected to call back url (create_oauth_remote_access_token)
+  <li>Access token stored in oauth_remote_access_token table
+  <li>Use it to make requests agains the remote site.
+  <br />  
+  access_token = User.current.oauth_remote_access_token.find_by_name('agree2')
+  <br />
+  access_token.get("/")
+  <br />
+  ...see OAuth gem rdoc for details
+</ol>
 
 <table>
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Authenticate url</th>
     <th>Consumer key</th>
     <th>Consumer secret</th>
-    <th>Authorize url</th>
+    <th>Site url</th>
   </tr>
 
 <% for oauth_remote_service_provider in @oauth_remote_service_providers %>
   <tr>
     <td><%=h oauth_remote_service_provider.name %></td>
     <td><%=h oauth_remote_service_provider.description %></td>
-    <td><%=h oauth_remote_service_provider.authenticate_url %></td>
     <td><%=h oauth_remote_service_provider.consumer_key %></td>
     <td><%=h oauth_remote_service_provider.consumer_secret %></td>
-    <td><%=h oauth_remote_service_provider.authorize_url %></td>
+    <td><%=h oauth_remote_service_provider.site_url %></td>
     <td><%= link_to 'Show', oauth_remote_service_provider %></td>
     <td><%= link_to 'Edit', edit_oauth_remote_service_provider_path(oauth_remote_service_provider) %></td>
     <td><%= link_to 'Destroy', oauth_remote_service_provider, :confirm => 'Are you sure?', :method => :delete %></td>

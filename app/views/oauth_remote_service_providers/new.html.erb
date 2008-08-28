@@ -4,7 +4,7 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name %> (unique, something like 'agree2')<br />
     <%= f.text_field :name %>
   </p>
   <p>
@@ -12,8 +12,8 @@
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label :authenticate_url %><br />
-    <%= f.text_field :authenticate_url %>
+    <%= f.label :site_url %><br />
+    <%= f.text_field :site_url %>
   </p>
   <p>
     <%= f.label :consumer_key %><br />
@@ -22,10 +22,6 @@
   <p>
     <%= f.label :consumer_secret %><br />
     <%= f.text_field :consumer_secret %>
-  </p>
-  <p>
-    <%= f.label :authorize_url %><br />
-    <%= f.text_field :authorize_url %>
   </p>
   <p>
     <%= f.submit "Create" %>

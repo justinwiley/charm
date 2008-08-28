@@ -10,7 +10,7 @@
 
 <p>
   <b>Authenticate url:</b>
-  <%=h @oauth_remote_service_provider.authenticate_url %>
+  <%=h @oauth_remote_service_provider.site_url %>
 </p>
 
 <p>
@@ -23,10 +23,6 @@
   <%=h @oauth_remote_service_provider.consumer_secret %>
 </p>
 
-<p>
-  <b>Authorize url:</b>
-  <%=h @oauth_remote_service_provider.authorize_url %>
-</p>
 
 
 <%= link_to 'Edit', edit_oauth_remote_service_provider_path(@oauth_remote_service_provider) %> |
